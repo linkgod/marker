@@ -214,7 +214,9 @@
         // change menu offset when window resize / scroll
         var setpos = function() {
             if(marker.toolbar.$this.css('display') !== 'none'){
-                marker.toolbar.showToolbar();
+                if(marker.toolbar.$this.css('position') !== 'absolute'){
+                    marker.toolbar.showToolbar();
+                }
             }
         };
         window.addEventListener('resize', setpos);
