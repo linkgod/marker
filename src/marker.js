@@ -79,7 +79,7 @@
     Marker.prototype.delectKeyword = function(keyword){
         var i;
 
-        // TODO: 有待改进，会分割单个6DOM为多个#text
+        // TODO: 有待改进，会让单个DOM为多个#text，有多个childNodes
         $(keyword.node).replaceWith(keyword.node.childNodes);
 
         // delete keyword from keyword list
@@ -192,15 +192,20 @@
 
         // auto show toolbar after select words
         $this.mouseup(function(){
-            var range;
+            var range,
+                startContainer,
+                endContainer;
 
             if(!marker._selection.isCollapsed){
                 range = marker._selection.getRangeAt(0);
                 // highlight whether start and end points in same container
-                // if(range.startContainer === range.endContainer){
+                startContainer = range.startContainer.nodeType === 3 ? range.startContainer.parentNode : range.startContainer;
+                endContainer = range.endContainer.nodeType === 3 ? range.endContainer.parentNode : range.endContainer;
+
+                if(startContainer === endContainer){
                     marker._range = marker._selection.getRangeAt(0);
                     marker.toolbar.showToolbar();
-                // }
+                }
             }
         });
 
