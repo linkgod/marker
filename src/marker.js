@@ -79,7 +79,6 @@
     Marker.prototype.delectKeyword = function(keyword){
         var i;
 
-        // TODO: 有待改进，会让单个DOM为多个#text，有多个childNodes
         $(keyword.node).replaceWith(keyword.node.childNodes);
 
         // delete keyword from keyword list
