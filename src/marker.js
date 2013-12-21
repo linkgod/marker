@@ -16,7 +16,7 @@
         }else if ($.type(config) === 'object'){
             $.extend(this.config, config);
         }else{
-            throw '你的marker配置类型错误，不应该是' + $.type(config);
+            throw 'marker config error，shoud not be' + $.type(config);
         }
 
         this.$this = $(this.config.dom);
@@ -101,7 +101,7 @@
             var marks = $(v).find('.markpen-mark');
             if( marks.length === 0){
                 isMarkedAll = false;
-                console.log('还有内容没有标记', v);
+                console.log('There are content no marked', v);
             }
         });
 
@@ -110,7 +110,16 @@
 
     // transform html to templet
     Marker.prototype.getTemplet = function(){
-        // TODO: export templet
+        var markerCopy = this.$this.clone(),
+            keywords = markerCopy.find('.markpen-mark');
+
+        $.each(keywords, function(k, v){
+            $(v).replaceWith('{{' + $(v).text() + '}}');
+        });
+
+        markerCopy.find('.markpen-toolbar').remove();
+
+        return markerCopy.html();
     };
 
     Marker.prototype.toolbar = function(){
@@ -140,7 +149,7 @@
                 try{
                     marker.addKeyword(marker._range, e.currentTarget.dataset.typeNum);
                 }catch(error){
-                    console.log(error, '无法跨行标记');
+                    console.log(error, 'Don\'t cross mark');
                 }
                 $toolbar.hide();
                 return false;
