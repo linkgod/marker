@@ -3,7 +3,7 @@ Marker
 
 **Marker** is a tool dependent on jQuery that can help you mark some words or sentences in website.
 
-But now it is too weak, I will try to make it more interesting.:laughing:
+But now it is too weak, I will try to make it more interesting.
 
 you can see a simple demo at [http://www.linkgod.net/marker/](http://www.linkgod.net/marker/)
 
