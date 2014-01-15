@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="../src/marker.css">
     </head>
     <body>
-        <article>
+        <article id="marker">
             <h1>韩寒2013年09月27日博客</h1>
             <p>这么多年来，一直是我脚下的流沙裹着我四处漂泊，它也不淹没我，它只是时不时提醒我，你没有别的选择，否则你就被风吹走了。我就这么浑浑噩噩地度过了我所有热血的岁月，被裹到东，被裹到西，连我曾经所鄙视的种子都不如。</p>
             <p>一直到一周以前，我对流沙说，让风把我吹走吧。</p>
@@ -35,7 +35,7 @@
         <script src="../src/marker.js"></script>
         <script>
         var marker = new Marker({
-            dom: 'article',
+            dom: document.getElementById('marker'),
             type: [
                 {
                     name: '精粹',
