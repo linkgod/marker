@@ -135,13 +135,14 @@
     // transform html to templet
     Marker.prototype.getTemplet = function(){
         var markerCopy = this.dom.cloneNode(true),
-            keywords = markerCopy.getElementsByClassName('markpen-mark');
+            keywords = [].slice.call(markerCopy.getElementsByClassName('markpen-mark'), 0),
+            toolbar = [].slice.call(markerCopy.getElementsByClassName('markpen-toolbar'), 0);
 
-        [].forEach.call(keywords, function(item){
+        keywords.forEach(function(item){
             item.outerHTML = '{{'+ item.innerHTML + '}}';
         });
 
-        [].forEach.call(markerCopy.getElementsByClassName('markpen-toolbar'), function(item){
+        toolbar.forEach(function(item){
             item.parentElement.removeChild(item);
         });
 
