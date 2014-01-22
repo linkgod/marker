@@ -73,7 +73,7 @@
             var keywordNode = document.createElement('span');
             keywordNode.id = 'mark' + id;
             keywordNode.setAttribute('data-type-num', typeNum);
-            keywordNode.className = 'markpen-mark';
+            keywordNode.className = 'marker-mark';
             keywordNode.title = that.config.type[typeNum].name;
             keywordNode.style.backgroundColor = that.config.type[typeNum].color;
             range.surroundContents(keywordNode);
@@ -94,10 +94,10 @@
             e.preventDefault();
 
             // show toolbar
-            [].forEach.call(that.toolbar.dom.getElementsByClassName('markpen-toolbar-delete'), function(item){
+            [].forEach.call(that.toolbar.dom.getElementsByClassName('marker-toolbar-delete'), function(item){
                 item.style.display = '';
             });
-            [].forEach.call(that.toolbar.dom.getElementsByClassName('markpen-toolbar-tag'), function(item){
+            [].forEach.call(that.toolbar.dom.getElementsByClassName('marker-toolbar-tag'), function(item){
                 item.style.display = 'none';
             });
             that.toolbar.dom.style.position = 'absolute';
@@ -135,8 +135,8 @@
     // transform html to templet
     Marker.prototype.getTemplet = function(){
         var markerCopy = this.dom.cloneNode(true),
-            keywords = [].slice.call(markerCopy.getElementsByClassName('markpen-mark'), 0),
-            toolbar = [].slice.call(markerCopy.getElementsByClassName('markpen-toolbar'), 0);
+            keywords = [].slice.call(markerCopy.getElementsByClassName('marker-mark'), 0),
+            toolbar = [].slice.call(markerCopy.getElementsByClassName('marker-toolbar'), 0);
 
         keywords.forEach(function(item){
             item.outerHTML = '{{'+ item.innerHTML + '}}';
@@ -165,14 +165,14 @@
 
             // init toolbar
             for(i = 0; i < that.config.type.length; i++){
-                toolbarTpl += '<a class="markpen-toolbar-tag markpen-toolbar-button" data-type-num="' + i + '">' +
+                toolbarTpl += '<a class="marker-toolbar-tag marker-toolbar-button" data-type-num="' + i + '">' +
                                   that.config.type[i].name +
                               '</a>';
             }
-            toolbarTpl += '<a class="markpen-toolbar-delete markpen-toolbar-button" style="display:none;">删除</a>';
+            toolbarTpl += '<a class="marker-toolbar-delete marker-toolbar-button" style="display:none;">删除</a>';
 
             toolbar = document.createElement('aside');
-            toolbar.setAttribute('class', 'markpen-toolbar');
+            toolbar.setAttribute('class', 'marker-toolbar');
             toolbar.innerHTML = toolbarTpl;
             toolbar.style.display = 'none';
 
@@ -182,8 +182,8 @@
             var toolbarClick = function(e){
                 e.stopPropagation();
 
-                var isMarkKeyword   = e.target.classList.contains('markpen-toolbar-tag'),
-                    isDelectKeyword = e.target.classList.contains('markpen-toolbar-delete');
+                var isMarkKeyword   = e.target.classList.contains('marker-toolbar-tag'),
+                    isDelectKeyword = e.target.classList.contains('marker-toolbar-delete');
 
                 if(isMarkKeyword){
 
@@ -220,10 +220,10 @@
                     left = offset.left + offset.width / 2;
 
                 // don't show delete option
-                [].forEach.call(toolbar.getElementsByClassName('markpen-toolbar-tag'), function(item){
+                [].forEach.call(toolbar.getElementsByClassName('marker-toolbar-tag'), function(item){
                     item.style.display = '';
                 });
-                [].forEach.call(toolbar.getElementsByClassName('markpen-toolbar-delete'), function(item){
+                [].forEach.call(toolbar.getElementsByClassName('marker-toolbar-delete'), function(item){
                     item.style.display = 'none';
                 });
 
