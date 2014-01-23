@@ -139,7 +139,7 @@
             toolbar = [].slice.call(markerCopy.getElementsByClassName('marker-toolbar'), 0);
 
         keywords.forEach(function(item){
-            item.outerHTML = '{{'+ item.innerHTML + '}}';
+            item.outerHTML = '{{'+ item.innerHTML + ':' + item.dataset.typeNum + '}}';
         });
 
         toolbar.forEach(function(item){
