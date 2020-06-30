@@ -5,7 +5,7 @@ Marker
 
 But now it is too weak, I will try to make it more interesting.
 
-you can see a simple demo at [http://linkgod.github.io/marker/](http://linkgod.github.io/marker/)
+you can see a simple demo at [http://linkgod.github.io/marker/demo](http://linkgod.github.io/marker/demo)
 
 ## Installation
 
