@@ -48,10 +48,9 @@
         });
 
         document.getElementById('getList').addEventListener('click', function(){
-            var list = marker.getKeywordList(),
-                showList = [];
-            $.each(list, function(k,v){
-                showList.push(v.type + ' 「<b>' + v.content + '</b>」<br>');
+            var list = marker.getKeywordList();
+            var showList = list.map(function(keyword) {
+                return keyword.type + ' 「<b>' + keyword.content + '</b>」<br>';
             });
             document.getElementById('showList').innerHTML = showList.join('');
         });
